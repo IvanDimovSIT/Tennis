@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://b81q3i7lrvscu"]
+
+[ext_resource type="Script" path="res://wall.gd" id="1_l2qfh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h8qo0"]
+size = Vector3(55, 3, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ficin"]
+albedo_color = Color(0.305882, 0.172549, 0.027451, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7fgw6"]
+material = SubResource("StandardMaterial3D_ficin")
+size = Vector3(60, 3, 1)
+
+[node name="Wall" type="Area3D"]
+script = ExtResource("1_l2qfh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_h8qo0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_7fgw6")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="wall_hit" from="." to="." method="_on_wall_hit"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bf66vjamyjjs8"]
+
+[ext_resource type="Script" path="res://player_net.gd" id="1_iwqoq"]
+[ext_resource type="AudioStream" uid="uid://bxfv1tt58mduw" path="res://assets/lose.mp3" id="2_5hghv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5ww71"]
+size = Vector3(1, 10, 50)
+
+[node name="PlayerNet" type="Area3D"]
+script = ExtResource("1_iwqoq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_5ww71")
+
+[node name="SoundLose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_5hghv")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

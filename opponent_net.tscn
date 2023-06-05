@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://lhdkqh63n5iu"]
+
+[ext_resource type="Script" path="res://opponent_net.gd" id="1_qytgi"]
+[ext_resource type="AudioStream" uid="uid://cwse32067nt70" path="res://assets/win.mp3" id="2_mnk60"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5ww71"]
+size = Vector3(1, 10, 50)
+
+[node name="OpponentNet" type="Area3D"]
+script = ExtResource("1_qytgi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_5ww71")
+
+[node name="SoundWin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_mnk60")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

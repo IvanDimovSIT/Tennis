@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxtep385fv8h5"]
+
+[ext_resource type="Script" path="res://pong_ball.gd" id="1_84cxk"]
+[ext_resource type="AudioStream" uid="uid://dkryk2asqghvo" path="res://assets/bounce.mp3" id="2_d6ib0"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_m6p7f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_co4pt"]
+albedo_color = Color(0.882353, 0.643137, 0.188235, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_oq6oc"]
+material = SubResource("StandardMaterial3D_co4pt")
+
+[node name="PongBall" type="Area3D"]
+script = ExtResource("1_84cxk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_m6p7f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+mesh = SubResource("SphereMesh_oq6oc")
+
+[node name="HitWallSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_d6ib0")
